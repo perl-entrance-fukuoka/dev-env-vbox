@@ -1,3 +1,4 @@
+# -*- coding: undecided -*-
 #
 # Cookbook Name:: perlbrew
 # Recipe:: default
@@ -24,28 +25,46 @@ user "user1" do
   # usestrict
 end
 
+#
+# perlbrew の環境構築がリソース不足等でできなかった場合のために
+# あらかじめ準備済のユーザ user2
+#
+user "user2" do
+  comment "User2"
+  home "/home/user2"
+  shell "/bin/bash"
+  password "$1$1/7CdRRx$zrMqL6pxlPB7REGd3axCp."
+  # usestrict
+end
+
 bash "install-perlbrew" do
   code <<-EOH
-su - user1 -c 'curl -kL http://install.perlbrew.pl | bash'
-su - user1 -c 'source ~/perl5/perlbrew/etc/bashrc; echo "source ~/perl5/perlbrew/etc/bashrc" >> ~/.bashrc'
+su - user2 -c 'curl -kL http://install.perlbrew.pl | bash'
+su - user2 -c 'source ~/perl5/perlbrew/etc/bashrc; echo "source ~/perl5/perlbrew/etc/bashrc" >> ~/.bashrc'
 EOH
 end
 
 bash "install-perl-5.14.3" do
   code <<-EOH
-su - user1 -c 'perlbrew -v -n install perl-5.14.3'
-su - user1 -c 'perlbrew switch perl-5.14.3; perl -v'
+su - user2 -c 'perlbrew -v -n install perl-5.14.3'
+su - user2 -c 'perlbrew switch perl-5.14.3; perl -v'
 EOH
 end
 
 bash "install-cpanm" do
   code <<-EOH
-su - user1 -c 'perlbrew install-cpanm'
+su - user2 -c 'perlbrew install-cpanm'
+EOH
+end
+
+bash "install-Plack" do
+  code <<-EOH
+su - user2 -c 'cpanm Plack'
 EOH
 end
 
 # bash "install-Module-Install" do
 #   code <<-EOH
-# su - user1 -c 'cpanm Module::Install Module::Install::AuthorTests Module::Install::Repository'
+# su - user2 -c 'cpanm Module::Install Module::Install::AuthorTests Module::Install::Repository'
 # EOH
 # end
