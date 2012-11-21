@@ -21,3 +21,9 @@ bash "locale" do
   sed -i 's|LANG=.*|LANG=ja_JP.UTF-8|' /etc/sysconfig/i18n
   EOH
 end
+
+# disable iptables
+service "iptables" do
+  supports :status => true, :restart => true, :reload => true
+  action [ :disable, :stop ]
+end
