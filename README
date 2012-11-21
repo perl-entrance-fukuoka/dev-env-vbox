@@ -5,7 +5,7 @@ Perl 入学式 開発環境 VirtualBox
 仮想アプライアンス作成用の VM を Vagrant で起動
 ----------
 
-    cd base
+    cd vagrant/base
     vagrant up
 
     # SSH 接続して中身確認
