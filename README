@@ -21,3 +21,14 @@ Perl 入学式 開発環境 VirtualBox
     # VM は停止した状態で
     VBoxManage export "perl-entrance-fukuoka" \
         --output perl-entrance-fukuoka-$(date +%Y%m%d).ova
+
+各種設定
+---------
+
+| account | password  |
+|---------|-----------|
+|   root  | vagrant   |
+|   user1 | usestrict |
+|   user2 | usestrict |
+
+( user2 には perlbrew + cpanm + Plack をあらかじめ準備済 )
