@@ -1,0 +1,66 @@
+
+環境構築手順 - Perl入学式 in 福岡 
+==========
+
+Perl入学式 in 福岡 での環境構築について
+----------
+各 OS 毎に環境構築する方法はありますが、
+今回は以下の目的のため VirtualBox に Linux (CentOS) を準備し構築します。
+
+- どの OS をご利用のかたも同じ手順をおこなっていただくため
+- みなさんのPC環境を極力汚さないようにするため
+- 実際にWebのサービスを公開するような場合、
+  Linuxサーバを利用することが多いため
+
+VirtualBox のインストール
+----------
+インストーラーをダウンロード
+- https://www.virtualbox.org/wiki/Downloads
+- 当日はUSBメモリで配布
+
+インストーラーを起動し、あとは手順にそって行う
+
+Perl入学式用 仮想アプライアンス(イメージ) の読み込みと起動
+----------
+仮想アプライアンスインポート
+- https://dl.dropbox.com/u/1981687/perl-entrance-fukuoka-20121124.ova
+- 当日はUSBメモリで配布
+
+設定
+----------
+* ネットワーク
+  - hostonly ネットワークを追加する
+
+* 共有フォルダ
+  - デスクトップ にフォルダ perl-entrance-fukuokaを作成し、
+    共有フォルダ追加
+
+* 起動後の確認
+
+- hostonly ネットワークでの IP アドレスを確認
+  
+      ifconfig
+  
+
+* SSH でログイン
+  
+      ssh user1@[hostonly ネットワークでの IP アドレス]
+      # usestrict
+
+* perlbrew のインストール
+
+    curl -kL http://install.perlbrew.pl | bash
+
+* perlbrew で perl-5.12.5 をインストール
+
+    perlbrew available
+    perlbrew -v install perl-5.12.5
+
+* cpanm のインストール
+
+    perlbrew install-cpanm
+
+* Plack のインストール
+
+    cpanm -v Plack
+

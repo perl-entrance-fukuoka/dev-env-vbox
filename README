@@ -2,33 +2,10 @@
 Perl 入学式 開発環境 VirtualBox
 ==========
 
-仮想アプライアンス作成用の VM を Vagrant で起動
-----------
+仮想アプライアンスを使っての環境構築手順等は、
+docs/user-manual.txt
 
-    cd vagrant/base
-    vagrant up
+仮想アプライアンスを作るほうは、
+docs/dev-manual.txt
 
-    # SSH 接続して中身確認
-    vagrant ssh
-    
-    # 停止
-    vagrant halt
-
-
-仮想アプライアンス作成
----------
-
-    # VM は停止した状態で
-    VBoxManage export "perl-entrance-fukuoka" \
-        --output perl-entrance-fukuoka-$(date +%Y%m%d).ova
-
-各種設定
----------
-
-| account | password  |
-|---------|-----------|
-|   root  | vagrant   |
-|   user1 | usestrict |
-|   user2 | usestrict |
-
-( user2 には perlbrew + cpanm + Plack をあらかじめ準備済 )
+を参照
