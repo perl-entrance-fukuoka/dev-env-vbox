@@ -26,41 +26,49 @@ Perl入学式用 仮想アプライアンス(イメージ) の読み込みと起
 - https://dl.dropbox.com/u/1981687/perl-entrance-fukuoka-20121124.ova
 - 当日はUSBメモリで配布
 
-設定
+設定と起動
 ----------
 * ネットワーク
-  - hostonly ネットワークを追加する
+- NAT および ホストオンリー が有効になっていることを確認
 
-* 共有フォルダ
-  - デスクトップ にフォルダ perl-entrance-fukuokaを作成し、
-    共有フォルダ追加
+* 共有フォルダ (オプション)
+- 自分の使いなれたエディタでプログラムし、
+  実行のみ Linux 上でおこないたい場合
+  ( SCP とかの手間をはぶくため )
 
-* 起動後の確認
+- デスクトップ にフォルダ perl-entrance-fukuokaを作成し、
+  共有フォルダ追加
+- ~user1/ 以下にシンボリックリンクをはる
 
-- hostonly ネットワークでの IP アドレスを確認
+起動後の確認
+----------
+- ホストオンリーネットワークでの IP アドレスを確認
   
       ifconfig
-  
+      # 192.168.33.10
 
-* SSH でログイン
+- SSH でログイン
   
-      ssh user1@[hostonly ネットワークでの IP アドレス]
+      ssh user1@192.168.33.10
       # usestrict
 
-* perlbrew のインストール
+perlbrew のインストール
+----------
 
     curl -kL http://install.perlbrew.pl | bash
 
-* perlbrew で perl-5.12.5 をインストール
+perlbrew で perl-5.12.5 をインストール
+----------
 
     perlbrew available
     perlbrew -v install perl-5.12.5
 
-* cpanm のインストール
+cpanm のインストール
+----------
 
     perlbrew install-cpanm
 
-* Plack のインストール
+Plack のインストール
+----------
 
     cpanm -v Plack
-

@@ -3,9 +3,9 @@ Perl 入学式 開発環境 VirtualBox
 ==========
 
 仮想アプライアンスを使っての環境構築手順等は、
-docs/user-manual.txt
+docs/user-manual.md
 
 仮想アプライアンスを作るほうは、
-docs/dev-manual.txt
+docs/dev-manual.md
 
 を参照
