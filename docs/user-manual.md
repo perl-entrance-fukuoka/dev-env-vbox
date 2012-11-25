@@ -2,6 +2,8 @@
 環境構築手順 - Perl入学式 in 福岡 
 ==========
 
+( 画面キャプチャ: https://cacoo.com/diagrams/CrhHlSCC7FfQS4b5 )
+
 Perl入学式 in 福岡 での環境構築について
 ----------
 各 OS 毎に環境構築する方法はありますが、
@@ -49,19 +51,32 @@ perlbrew のインストール
 ----------
 
     curl -kL http://install.perlbrew.pl | bash
+    source ~/perl5/perlbrew/etc/bashrc
+    echo 'source ~/perl5/perlbrew/etc/bashrc' >> ~/.bashrc
 
 perlbrew で perl-5.12.5 をインストール
 ----------
 
     perlbrew available
-    perlbrew -v install perl-5.12.5
+    perlbrew -v -n install perl-5.12.5
+
+    perl -v
+    which perl
+
+    perlbrew list
+    perlbrew use perl-5.12.5
+    perl -v
+    which perl
 
 cpanm のインストール
 ----------
 
     perlbrew install-cpanm
 
+    cpanm --version
+
 Plack のインストール
 ----------
 
     cpanm -v Plack
+    perldoc Plack
