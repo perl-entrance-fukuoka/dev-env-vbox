@@ -1,4 +1,4 @@
-# -*- coding: undecided -*-
+# -*- coding: utf-8 -*-
 #
 # Cookbook Name:: perlbrew
 # Recipe:: default
@@ -38,6 +38,7 @@ user "user2" do
 end
 
 bash "install-perlbrew" do
+  not_if { File.exists?('/home/user2/perl5/perlbrew/etc/bashrc') }
   code <<-EOH
 su - user2 -c 'curl -kL http://install.perlbrew.pl | bash'
 su - user2 -c 'source ~/perl5/perlbrew/etc/bashrc; echo "source ~/perl5/perlbrew/etc/bashrc" >> ~/.bashrc'
@@ -45,6 +46,7 @@ EOH
 end
 
 bash "install-perl-5.14.3" do
+  not_if { File.exists?('/home/user2/perl5/perlbrew/perls/perl-5.14.3/bin/perl') }
   code <<-EOH
 su - user2 -c 'perlbrew -v -n install perl-5.14.3'
 su - user2 -c 'perlbrew switch perl-5.14.3; perl -v'
@@ -52,14 +54,16 @@ EOH
 end
 
 bash "install-cpanm" do
+  not_if { File.exists?('/home/user2/perl5/perlbrew/bin/cpanm') }
   code <<-EOH
 su - user2 -c 'perlbrew install-cpanm'
 EOH
 end
 
 bash "install-Plack" do
+  not_if { File.exists?('/home/user2/perl5/perlbrew/perls/perl-5.14.3/lib/site_perl/5.14.3/Plack.pm') }
   code <<-EOH
-su - user2 -c 'cpanm Plack'
+su - user2 -c 'cpanm -n Plack'
 EOH
 end
 

@@ -25,7 +25,7 @@ VirtualBox のインストール
 Perl入学式用 仮想アプライアンス(イメージ) の読み込みと起動
 ----------
 仮想アプライアンスインポート
-- https://dl.dropbox.com/u/1981687/perl-entrance-fukuoka-20121124.ova
+- https://dl.dropbox.com/u/1981687/perl-entrance-fukuoka-20121128.ova
 - 当日はUSBメモリで配布
 
 設定と起動

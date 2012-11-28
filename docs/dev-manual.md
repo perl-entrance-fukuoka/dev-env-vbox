@@ -21,6 +21,15 @@ Vagrant で Base box を作成
 仮想アプライアンス作成
 ---------
 
+    # 停止
+    vagrant halt
+    
+    # vagrant が利用する共有フォルダ削除
+    VBoxManage sharedfolder remove "perl-entrance-fukuoka" \
+        --name "v-root"
+    VBoxManage sharedfolder remove "perl-entrance-fukuoka" \
+        --name "v-csc-1"
+    
     # VM は停止した状態で
     VBoxManage export "perl-entrance-fukuoka" \
         --output perl-entrance-fukuoka-$(date +%Y%m%d).ova
