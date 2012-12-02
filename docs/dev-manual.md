@@ -37,10 +37,10 @@ Vagrant で Base box を作成
 各種設定
 ---------
 
-| account | password  |
-|---------|-----------|
-|   root  | vagrant   |
-|   user1 | usestrict |
-|   user2 | usestrict |
+| account  | password  |
+|----------|-----------|
+|   root   | vagrant   |
+| student  | usestrict |
+| student2 | usestrict |
 
-( user2 には perlbrew + cpanm + Plack をあらかじめ準備済 )
+( student2 には perlbrew + cpanm + Plack をあらかじめ準備済 )

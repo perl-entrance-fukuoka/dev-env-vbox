@@ -17,9 +17,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-user "user1" do
-  comment "User1"
-  home "/home/user1"
+user "student" do
+  comment "Student"
+  home "/home/student"
   shell "/bin/bash"
   password "$1$1/7CdRRx$zrMqL6pxlPB7REGd3axCp."
   # usestrict
@@ -27,48 +27,42 @@ end
 
 #
 # perlbrew の環境構築がリソース不足等でできなかった場合のために
-# あらかじめ準備済のユーザ user2
+# あらかじめ準備済のユーザ student2
 #
-user "user2" do
-  comment "User2"
-  home "/home/user2"
+user "student2" do
+  comment "Student2"
+  home "/home/student2"
   shell "/bin/bash"
   password "$1$1/7CdRRx$zrMqL6pxlPB7REGd3axCp."
   # usestrict
 end
 
 bash "install-perlbrew" do
-  not_if { File.exists?('/home/user2/perl5/perlbrew/etc/bashrc') }
+  not_if { File.exists?('/home/student2/perl5/perlbrew/etc/bashrc') }
   code <<-EOH
-su - user2 -c 'curl -kL http://install.perlbrew.pl | bash'
-su - user2 -c 'source ~/perl5/perlbrew/etc/bashrc; echo "source ~/perl5/perlbrew/etc/bashrc" >> ~/.bashrc'
+su - student2 -c 'curl -kL http://install.perlbrew.pl | bash'
+su - student2 -c 'source ~/perl5/perlbrew/etc/bashrc; echo "source ~/perl5/perlbrew/etc/bashrc" >> ~/.bashrc'
 EOH
 end
 
-bash "install-perl-5.14.3" do
-  not_if { File.exists?('/home/user2/perl5/perlbrew/perls/perl-5.14.3/bin/perl') }
+bash "install-perl-5.16.2" do
+  not_if { File.exists?('/home/student2/perl5/perlbrew/perls/perl-5.16.2/bin/perl') }
   code <<-EOH
-su - user2 -c 'perlbrew -v -n install perl-5.14.3'
-su - user2 -c 'perlbrew switch perl-5.14.3; perl -v'
+su - student2 -c 'perlbrew -v -n install perl-5.16.2'
+su - student2 -c 'perlbrew switch perl-5.16.2; perl -v'
 EOH
 end
 
 bash "install-cpanm" do
-  not_if { File.exists?('/home/user2/perl5/perlbrew/bin/cpanm') }
+  not_if { File.exists?('/home/student2/perl5/perlbrew/bin/cpanm') }
   code <<-EOH
-su - user2 -c 'perlbrew install-cpanm'
+su - student2 -c 'perlbrew install-cpanm'
 EOH
 end
 
 bash "install-Plack" do
-  not_if { File.exists?('/home/user2/perl5/perlbrew/perls/perl-5.14.3/lib/site_perl/5.14.3/Plack.pm') }
+  not_if { File.exists?('/home/student2/perl5/perlbrew/perls/perl-5.16.2/lib/site_perl/5.16.2/Plack.pm') }
   code <<-EOH
-su - user2 -c 'cpanm -n Plack'
+su - student2 -c 'cpanm -n Plack'
 EOH
 end
-
-# bash "install-Module-Install" do
-#   code <<-EOH
-# su - user2 -c 'cpanm Module::Install Module::Install::AuthorTests Module::Install::Repository'
-# EOH
-# end
