@@ -46,24 +46,26 @@ Perl入学式用 仮想アプライアンス(イメージ) の読み込みと起
     ssh student@192.168.33.10
 
 
+現在のperlのヴァージョン確認
+----------
+    perl -v
+    which perl
+
 perlbrew のインストール
 ----------
-
     curl -kL http://install.perlbrew.pl | bash
     source ~/perl5/perlbrew/etc/bashrc
     echo 'source ~/perl5/perlbrew/etc/bashrc' >> ~/.bashrc
 
-perlbrew で perl-5.12.5 をインストール
+perlbrew で perl-5.16.2 をインストール
 ----------
 
     perlbrew available
-    perlbrew -v -n install perl-5.12.5
+    perlbrew -v -n install perl-5.16.2
 
-    perl -v
-    which perl
 
     perlbrew list
-    perlbrew use perl-5.12.5
+    perlbrew switch perl-5.16.2
     perl -v
     which perl
 
