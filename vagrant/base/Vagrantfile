@@ -79,6 +79,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe "init"
     chef.add_recipe "deps"
     chef.add_recipe "perlbrew"
+    chef.add_recipe "vim"
   end
 
   # Enable provisioning with chef server, specifying the chef server URL,
