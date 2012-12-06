@@ -1,8 +1,8 @@
 
 Vagrant で Base box を作成
 ----------
-- veewee で CentOS-6.3-x86_64-minimal をベースに作成
-- https://dl.dropbox.com/u/1981687/CentOS-6.3-x86_64-minimal-ja.box
+- veewee で CentOS-6.3-i386-minimal をベースに作成
+- https://dl.dropbox.com/u/1981687/CentOS-6.3-i386-minimal-ja.box
 
 
 仮想アプライアンス作成用の VM を Vagrant で起動
