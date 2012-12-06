@@ -63,6 +63,20 @@ end
 bash "install-Plack" do
   not_if { File.exists?('/home/student2/perl5/perlbrew/perls/perl-5.16.2/lib/site_perl/5.16.2/Plack.pm') }
   code <<-EOH
-su - student2 -c 'cpanm -n Plack'
+su - student2 -c 'cpanm Plack'
+EOH
+end
+
+bash "install-Text-Xslate" do
+  not_if { File.exists?('/home/student2/perl5/perlbrew/perls/perl-5.16.2/lib/site_perl/5.16.2/i386/Text/Xslate.pm') }
+  code <<-EOH
+su - student2 -c 'cpanm Text::Xslate'
+EOH
+end
+
+bash "install-Data-Section-Simple" do
+  not_if { File.exists?('/home/student2/perl5/perlbrew/perls/perl-5.16.2/lib/site_perl/5.16.2/Data/Section/Simple.pm') }
+  code <<-EOH
+su - student2 -c 'cpanm Data::Section::Simple'
 EOH
 end
